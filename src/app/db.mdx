@@ -1,0 +1,54 @@
+user {
+    email
+    avatarURL
+    books: Book[]
+}
+
+book {
+    title: string
+    numberOfPages: number
+    pages: Page[]
+    savedWords: Word[]
+    session: SessionId   
+}
+
+page {
+    book: bookId
+    pageNumber: number
+    words: Word[]
+}
+
+word {
+   isTranslated: boolean
+   content: string
+   translation: string
+   page: pageId 
+}
+
+savedWord {
+    content: string
+    translation: string
+    book: bookId
+}
+
+session {
+    book: bookId
+    currentPage: number
+    totalPages: number
+    progress: number
+}
+
+
+USER CAN HAVE MULTIPLE BOOKS
+BOOK CAN HAVE ONLY ONE USER
+
+
+ONE BOOK CAN HAVE MULTIPLE PAGES
+PAGE CAN HAVE ONE BOOK
+ONE BOOK CAN HAVE MULTIPLE SAVED WORDS
+SAVED WORD CAN HAVE ONE BOOK
+ONE BOOK CAN HAVE ONE SESSION
+
+ONE PAGE CAN HAVE MULTIPLE WORDS
+WORD CAN HAVE ONLY ONE PAGE
+
