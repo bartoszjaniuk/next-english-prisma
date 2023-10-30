@@ -46,7 +46,7 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
-  books         Book[]
+  books     Book[]
 }
 
 model VerificationToken {
@@ -60,7 +60,7 @@ model VerificationToken {
 model Book {
     id String    @id @default(cuid()) @map("_id")
     title String 
-    numberOfPages Int
+    totalPages Int
     pages Page[]
     savedWords SavedWord[]
     userId String @unique

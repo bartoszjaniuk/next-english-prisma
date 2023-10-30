@@ -7,6 +7,10 @@ const nextConfig = {
     images: {
       domains: ["res.cloudinary.com", "m.media-amazon.com"],
     },
+    experimental: {
+      serverComponentsExternalPackages: ['pdf-parse'],
+      
+    },
   };
   
   module.exports = nextConfig;
