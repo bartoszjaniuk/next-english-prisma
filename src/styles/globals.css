@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500;600;700&family=Work+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -11,6 +12,38 @@
     @apply hover:dark:bg-backgroundDark dark:text-gray-200 dark:shadow-layoutDark  dark:hover:text-primary;
   }
 }
+
+
+:root {
+	--bg: white;
+	--textColor: black;
+	--softBg: #f0f0f0;
+	--softTextColor: #626262;
+	--primary: #6366f1;
+	--primary-hover: #6376f1;
+}
+
+
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	max-width: 100vw;
+	overflow-x: hidden;
+	font-family: 'Work Sans', sans-serif;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+
+
 
 .popper-arrow::before {
   position: absolute;
@@ -150,3 +183,36 @@
   left: 3px;
   top: 0;
 }
+
+
+.responsive-padding {
+		@apply px-6 lg:px-12;
+	}
+
+
+
+	.animate-float {
+		animation: float 6s ease-in-out infinite;
+	}
+
+	@keyframes float {
+		0% {
+			transform: translatey(0px);
+		}
+		50% {
+			transform: translatey(-20px);
+		}
+		100% {
+			transform: translatey(0px);
+		}
+	}
+
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5 {
+    font-family: 'Cormorant', serif;
+		letter-spacing: -0.4px;
+	}

@@ -26,7 +26,6 @@ export const createBookForCurrentUser = async ({ book, user }: { book: Book, use
     const wordsToCreate = [];
     for (const page of book.pages) {
         const createdPageId = createdBook.pages.find((p) => p.pageNumber === page.numberOfPage)?.id;
-
         if (createdPageId) {
             wordsToCreate.push(...page.words.map(word => ({
                 ...word,
@@ -34,7 +33,6 @@ export const createBookForCurrentUser = async ({ book, user }: { book: Book, use
             })));
         }
     }
-
     await prisma.word.createMany({
         data: wordsToCreate,
     });

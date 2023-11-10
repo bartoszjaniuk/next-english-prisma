@@ -13,6 +13,7 @@ export const useFile = () => {
 
         const file = e.target.files[0];
 
+        // TODO: ADD VALIDATION FOR FILE
         // const maxSizeInBytes = 10 * 1024 * 1024; // 10MB
         // if (file.size > maxSizeInBytes) {
         //     return setImageFileErrorMessage(
@@ -33,8 +34,6 @@ export const useFile = () => {
 
         setFile(file);
         reader.readAsDataURL(file);
-
-        console.log({ file });
     };
 
     const removeFile = () => {
