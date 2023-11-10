@@ -1,11 +1,12 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React, {  useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { LoginFormProps } from '../constants/loginForm.types';
+import { LoginFormProps } from '../models/loginForm.types';
 import { Input } from '@/components/input/Input';
-import { emailPattern } from '../constants/emailPattern.types';
 import { SignLayout } from '@/_views/shared/signLayout/SignLayout';
 import { signIn } from 'next-auth/react';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { LoginFormFieldValues, LoginFormSchema } from '../models/loginFormSchema.types';
 
 type FormProps = {
     toggleFlow: VoidFunction;
@@ -19,8 +20,9 @@ export const Form = ({ toggleFlow }: FormProps) => {
         watch,
         getFieldState,
         formState: { errors, isValid, isSubmitting },
-    } = useForm<LoginFormProps>({
+    } = useForm<LoginFormFieldValues>({
         mode: "all",
+        resolver: zodResolver(LoginFormSchema)
     });
 
     const [isPasswordInputVisible, setIsPasswordInputVisible] = useState(false)
@@ -47,10 +49,6 @@ export const Form = ({ toggleFlow }: FormProps) => {
                     label="Email"
                     placeholder="Podaj swój email"
                     register={register}
-                    rules={{
-                        required: "To pole jest wymagane.",
-                        pattern: emailPattern,
-                    }}
                     errors={errors}
                 />
 
@@ -61,9 +59,6 @@ export const Form = ({ toggleFlow }: FormProps) => {
                     label="Hasło"
                     placeholder="Podaj hasło"
                     register={register}
-                    rules={{
-                        required: "To pole jest wymagane.",
-                    }}
                     errors={errors}
                 />}
                 {!isPasswordInputVisible && <button

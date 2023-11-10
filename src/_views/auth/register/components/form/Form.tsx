@@ -4,7 +4,8 @@ import { Input } from '@/components/input/Input'
 import React from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { RegisterFormProps } from '../../constants/registerForm.consts';
-import { emailPattern } from '@/_views/auth/login/components/constants/emailPattern.types';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { RegisterFormFieldValues, RegisterFormSchema } from '../../models/registerForm.types';
 
 type FormProps = {
     toggleFlow: VoidFunction;
@@ -30,11 +31,10 @@ export const Form = ({ toggleFlow }: FormProps) => {
         reset,
         register,
         handleSubmit,
-        watch,
-        getFieldState,
-        formState: { errors, isValid, isSubmitting },
-    } = useForm<RegisterFormProps>({
+        formState: { errors, isValid },
+    } = useForm<RegisterFormFieldValues>({
         mode: "all",
+        resolver: zodResolver(RegisterFormSchema)
     });
     const onSubmit: SubmitHandler<RegisterFormProps> = async (data: RegisterFormProps) => {
         await registerUser(data);
@@ -52,10 +52,6 @@ export const Form = ({ toggleFlow }: FormProps) => {
                     label="Email"
                     placeholder="Podaj swój email"
                     register={register}
-                    rules={{
-                        required: "To pole jest wymagane.",
-                        pattern: emailPattern,
-                    }}
                     errors={errors}
                 />
 
@@ -66,9 +62,6 @@ export const Form = ({ toggleFlow }: FormProps) => {
                     label="Hasło"
                     placeholder="Podaj hasło"
                     register={register}
-                    rules={{
-                        required: "To pole jest wymagane.",
-                    }}
                     errors={errors}
                 />
 
@@ -79,15 +72,11 @@ export const Form = ({ toggleFlow }: FormProps) => {
                     label="Powtórz hasło"
                     placeholder="Powtórz hasło"
                     register={register}
-                    rules={{
-                        required: "To pole jest wymagane.",
-                    }}
                     errors={errors}
                 />
 
 
                 <button
-                
                     className="bg-primary text-white active:bg-emerald-600 w-full lg:w-auto  uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 disabled:bg-gray-300 disabled:cursor-not-allowed"
                     type="submit"
                     disabled={!isValid}
