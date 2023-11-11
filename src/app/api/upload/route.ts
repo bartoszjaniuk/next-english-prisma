@@ -23,13 +23,16 @@ export async function POST(request: Request) {
     const data = await request.formData();
 
     const file: File | null = data.get('file') as unknown as File;
+
+    const imageUrl = data.get('imageUrl') as string;
+    const bookTitle = data.get('bookTitle') as string;
     if (!file) {
         return NextResponse.json({ success: false })
     }
 
     const book = await convertPdfIntoObject(file);
 
-    const newBook = await createBookForCurrentUser({ book, user })
+    const newBook = await createBookForCurrentUser({ book, user, imageUrl, bookTitle })
 
     await createSessionForNewBook(newBook);
 

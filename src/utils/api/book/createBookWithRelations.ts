@@ -2,11 +2,12 @@ import { User } from "next-auth";
 import prisma from "../../connect";
 import { Book } from "./models/book.types";
 
-export const createBookForCurrentUser = async ({ book, user }: { book: Book, user: User }) => {
+export const createBookForCurrentUser = async ({ book, user, imageUrl, bookTitle }: { book: Book, user: User, imageUrl: string, bookTitle: string }) => {
     const createdBook = await prisma.book.create({
         data: {
-            title: book.title,
+            title: bookTitle,
             totalPages: book.totalPages,
+            imageUrl,
             user: {
                 connect: {
                     id: user.id,
