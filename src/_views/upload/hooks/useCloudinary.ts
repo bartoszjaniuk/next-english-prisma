@@ -14,8 +14,9 @@ export const useCloudinary = (nextStep: VoidFunction) => {
                 setIsLoading(false)
                 return;
             }
-            const url = await response.json();
-            setCloudinaryImageUrl(url)
+            const data = await response.json();
+            setCloudinaryImageUrl(data.url)
+            setIsLoading(false);
             return nextStep();
 
         } catch (error) {

@@ -27,13 +27,13 @@ export const useUploadFile = ({ resetStep, nextStep }: UseUploadFileProps) => {
 
     const bookFileRef = useRef<HTMLInputElement | null>(null);
 
-    const uploadBook = async (file: File, bookName: string) => {
+    const uploadBook = async (file: File, bookTitle: string) => {
         if (!file) return;
         setIsLoadingFile(true);
         const data = new FormData();
         data.set('file', file);
         data.set('imageUrl', cloudinaryImageUrl);
-        data.set('bookName', bookName);
+        data.set('bookTitle', bookTitle);
         const res = await fetch('/api/upload', {
             method: 'POST',
             body: data

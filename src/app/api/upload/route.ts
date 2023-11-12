@@ -26,6 +26,7 @@ export async function POST(request: Request) {
 
     const imageUrl = data.get('imageUrl') as string;
     const bookTitle = data.get('bookTitle') as string;
+
     if (!file) {
         return NextResponse.json({ success: false })
     }

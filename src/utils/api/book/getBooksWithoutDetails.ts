@@ -2,13 +2,48 @@ import { authOptions } from "@/utils/auth";
 import prisma from "@/utils/connect";
 import { getServerSession } from "next-auth";
 
-type GetBooksReturnType = {
-    id: string,
-    title: string,
-    totalPages: number,
+type Books = {
+    id: string;
+    title: string;
     userId: string;
-    imageURL?: string;
+    totalPages: number;
+    imageUrl: string | null;
+    savedWords: SavedWord[];
+    bookSession: BookSession | null;
 }
+
+type GetBooksReturnType = {
+    id: string;
+    title: string;
+    userId: string;
+    imageUrl: string | null;
+    pagesNumber: number;
+    progressNumber: number;
+    savedWordsNumber: number;
+}
+
+type Page = {
+    id: string;
+    pageNumber: number;
+    bookId: string;
+}
+type SavedWord = {
+    id: string;
+    content: string;
+    translation: string;
+    bookId: string;
+}
+
+type BookSession = {
+    id: string;
+    currentPage: number;
+    totalPages: number;
+    progress: number;
+    bookId: string;
+}
+
+
+
 
 export const getBooksWithoutDetails = async (): Promise<GetBooksReturnType[] | []> => {
     try {
@@ -31,12 +66,26 @@ export const getBooksWithoutDetails = async (): Promise<GetBooksReturnType[] | [
         }
 
 
-        const books: GetBooksReturnType[] = await prisma.book.findMany({
+        const books: Books[] = await prisma.book.findMany({
             where: {
                 userId: user?.id
+            },
+            select: {
+                id: true,
+                imageUrl: true,
+                savedWords: true,
+                totalPages: true,
+                userId: true,
+                title: true,
+                bookSession: true,
             }
         })
-        return books;
+        return books.map((book) => ({
+            ...book,
+            pagesNumber: book.totalPages,
+            savedWordsNumber: book.savedWords.length,
+            progressNumber: book?.bookSession?.progress || 0,
+        }));
     } catch (error) {
         console.log(error);
         return []
