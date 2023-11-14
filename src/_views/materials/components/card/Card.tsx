@@ -1,4 +1,6 @@
+"use client";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 type CardProps = {
@@ -7,6 +9,7 @@ type CardProps = {
 	pagesNumber: number;
 	progressNumber: number;
 	savedWordsNumber: number;
+	id: string;
 };
 
 export const Card = ({
@@ -15,9 +18,15 @@ export const Card = ({
 	pagesNumber,
 	progressNumber,
 	savedWordsNumber,
+	id,
 }: CardProps) => {
+	const router = useRouter();
+	const handleNavigate = () => router.push(`/materials/${id}`);
 	return (
-		<div className="w-[350px] bg-layoutLight dark:bg-layoutDark rounded overflow-hidden shadow-lg">
+		<div
+			className="w-[350px] bg-layoutLight dark:bg-layoutDark rounded overflow-hidden shadow-lg hover:cursor-pointer"
+			onClick={handleNavigate}
+		>
 			<Image
 				className="h-72 w-full object-contain"
 				src={imageUrl as string}
