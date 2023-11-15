@@ -54,9 +54,9 @@ export type CurrentPage = {
 };
 
 export type Word = {
-	id: string;
+	// id: string;
+	// pageId: string;
 	isTranslated: boolean;
 	content: string;
 	translation: string;
-	pageId: string;
 };
