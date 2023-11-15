@@ -16,7 +16,7 @@ export const updateWord = async (newWord: Word) => {
 		return null;
 	}
 
-	const updateExistingWord = await prisma.word.update({
+	await prisma.word.update({
 		where: {
 			id: newWord.id,
 		},
@@ -27,7 +27,7 @@ export const updateWord = async (newWord: Word) => {
 		},
 	});
 
-	const savedWord = await prisma.savedWord.create({
+	await prisma.savedWord.create({
 		data: {
 			content: newWord.content,
 			translation: newWord.translation,

@@ -1,6 +1,22 @@
 import { User } from "next-auth";
 import prisma from "../../connect";
-import { Book } from "./models/book.types";
+
+type NewBook = {
+	totalPages: number;
+	pages: NewPage[];
+	title: string;
+};
+
+type NewPage = {
+	numberOfPage: number;
+	words: NewWord[];
+};
+
+type NewWord = {
+	isTranslated: boolean;
+	translation: string;
+	content: string;
+};
 
 export const createBookForCurrentUser = async ({
 	book,
@@ -8,7 +24,7 @@ export const createBookForCurrentUser = async ({
 	imageUrl,
 	bookTitle,
 }: {
-	book: Book;
+	book: NewBook;
 	user: User;
 	imageUrl: string;
 	bookTitle: string;
