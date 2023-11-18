@@ -19,7 +19,7 @@ export const ThirdStep = ({
 		<>
 			{bookFile && (
 				<Badge
-					label="Plik PDF"
+					label="PDF file"
 					file={bookFile}
 					onRemoveFile={onRemoveBookFile}
 				/>
@@ -29,7 +29,7 @@ export const ThirdStep = ({
 					htmlFor="bookName"
 					className="block mb-2 text-md font-medium text-gray-900 dark:text-white"
 				>
-					Nazwa pliku
+					Filename
 				</label>
 				<input
 					disabled
@@ -39,7 +39,7 @@ export const ThirdStep = ({
 					className="bg-layoutLight border border-gray-200 text-gray-900 text-sm font-medium rounded-md block w-full p-4 dark:text-layoutLight dark:bg-layoutDark dark:border-gray-700"
 				/>
 			</div>
-			<ImagePreview previewUrl={cloudinaryImageUrl} label="Podgląd obrazka" />
+			<ImagePreview previewUrl={cloudinaryImageUrl} label="Image preview" />
 		</>
 	);
 };

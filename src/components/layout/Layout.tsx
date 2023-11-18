@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import { Header } from "./components/header/Header";
 import { Sidebar } from "./components/sidebar/Sidebar";
 import { ContentWrapper } from "./components/contentWrapper/ContentWrapper";
 import { usePathname } from "next/navigation";
@@ -19,14 +18,12 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
 		<>
 			{isWithoutLayout && (
 				<div className="flex pb-[100px] md:pb-0 h-full w-full">
-					<Header />
 					<Sidebar isOpen={isOpen} toggleIsOpen={toggleIsOpen} />
 					<ContentWrapper isOpen={isOpen}>{children}</ContentWrapper>
 				</div>
 			)}
 			{!isWithoutLayout && (
 				<div className="md:bg-backgroundLight md:dark:bg-backgroundDark  bg-layoutLight dark:bg-layoutDark min-h-screen">
-					<Header />
 					{children}
 				</div>
 			)}

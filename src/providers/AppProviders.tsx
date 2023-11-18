@@ -18,8 +18,7 @@ export const AppProviders = ({
 			<ThemeProvider attribute="class" defaultTheme="system" enableSystem>
 				<ErrorBoundary fallbackRender={fallbackRender}>
 					<ReactQueryProvider>
-						<ReactQueryDevtools initialIsOpen={false} />
-
+						{/* <ReactQueryDevtools initialIsOpen={false} /> */}
 						<Layout>{children}</Layout>
 					</ReactQueryProvider>
 				</ErrorBoundary>

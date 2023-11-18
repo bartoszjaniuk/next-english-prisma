@@ -1,6 +1,6 @@
 export const stepTitle = [
-    "1. Dodawanie pliku",
-    "2. Dane pliku",
-    "3. Podsumowanie",
+	"1. Upload file",
+	"2. File details",
+	"3. Summary",
 ];
-export const buttonTitle = ["Następny krok", "Następny krok", "Wgraj plik"];
+export const buttonTitle = ["Next step", "Next step", "Upload file"];

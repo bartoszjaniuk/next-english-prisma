@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import { getServerSession } from "next-auth/next";
 import "../styles/globals.css";
 import { AppProviders } from "@/providers/AppProviders";
 import { authOptions } from "@/utils/auth";
-
-const inter = Inter({ subsets: ["latin"] });
+import { Font } from "@/utils/fonts";
 
 export const metadata: Metadata = {
 	title: "Next Level English",
@@ -21,7 +19,7 @@ export default async function RootLayout({
 	const session = await getServerSession(authOptions);
 	return (
 		<html lang="en" suppressHydrationWarning>
-			<body className={`${inter.className} min-h-screen`}>
+			<body className={`${Font.cormorant} min-h-screen`}>
 				<AppProviders session={session}>{children}</AppProviders>
 			</body>
 		</html>

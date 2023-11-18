@@ -18,7 +18,7 @@ export const SignLayout = ({
 			}`}
 		>
 			<h1 className="text-5xl py-8 text-primary">
-				{isLogin ? "Logowanie" : "Rejestracja"}
+				{isLogin ? "Sign in" : "Sign up"}
 			</h1>
 			<button
 				onClick={handleLoginWithGoogle}
@@ -70,33 +70,33 @@ export const SignLayout = ({
 			</button>
 			<div className="pt-2 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-300 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-300">
 				<p className="mx-4 text-sm mb-0 text-center font-extralight dark:text-neutral-200">
-					lub za pomocą maila i hasła
+					or with email and password
 				</p>
 			</div>
 			{children}
 			{isLogin && (
 				<div className="pt-2 flex items-center gap-1">
 					<p className="text-sm mb-0  font-extralight dark:text-neutral-200">
-						Nie posiadasz konta?
+						Don't have an account?
 					</p>
 					<button
 						className="font-light text-primary cursor-pointer"
 						onClick={toggleFlow}
 					>
-						Zarejestruj się
+						Sign up
 					</button>
 				</div>
 			)}
 			{!isLogin && (
 				<div className="pt-2 flex items-center gap-1">
 					<p className="text-sm mb-0  font-extralight dark:text-neutral-200">
-						Masz juz konto?
+						Already have an account?
 					</p>
 					<button
 						className="font-light text-primary cursor-pointer"
 						onClick={toggleFlow}
 					>
-						Zaloguj się
+						Sign in
 					</button>
 				</div>
 			)}

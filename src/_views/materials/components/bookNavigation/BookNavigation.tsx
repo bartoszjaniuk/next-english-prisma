@@ -2,7 +2,7 @@
 import { Loader } from "@/_views/upload/components/loader/Loader";
 import { ArrowIcon } from "@/components/icons/ArrowIcon/ArrowIcon";
 import React from "react";
-import { ProgressBar } from "./components/progressBar/ProgressBar";
+import { Toolbar } from "../toolbar/Toolbar";
 
 type BookNavigationProps = {
 	progress: number;
@@ -20,10 +20,11 @@ export const BookNavigation = ({
 	isSessionUpdating,
 }: BookNavigationProps) => {
 	return (
-		<>
-			<ProgressBar progressPercentage={progress} />
+		<div className="relative">
+			<Toolbar progress={progress} />
+
 			{children(currentPage)}
-			<div className="flex items-center mt-8">
+			<div className="flex items-center mt-4 justify-center">
 				<ArrowIcon
 					disabled={isSessionUpdating}
 					onClick={() => handleChangePage("prev")}
@@ -36,7 +37,7 @@ export const BookNavigation = ({
 					</span>
 				)}
 				{!isSessionUpdating && (
-					<span className="text-base px-4">Strona {currentPage}</span>
+					<span className="text-base px-4">Page {currentPage}</span>
 				)}
 				<ArrowIcon
 					disabled={isSessionUpdating}
@@ -44,6 +45,6 @@ export const BookNavigation = ({
 					className="w-10 h-10 bg-gray-200 text-gray-900 border dark:bg-gray-700 dark:text-white dark:border-backgroundDark text-3xl rounded-full shadow-sm p-1 cursor-pointer rotate-180"
 				/>
 			</div>
-		</>
+		</div>
 	);
 };

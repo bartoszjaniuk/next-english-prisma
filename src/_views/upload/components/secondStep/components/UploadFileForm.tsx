@@ -29,7 +29,7 @@ export const UploadFileForm = ({
 					htmlFor="bookName"
 					className="block mb-2 text-md font-medium text-gray-900 dark:text-white"
 				>
-					Nazwa pliku*
+					Filename*
 				</label>
 				<input
 					{...register("bookName")}
@@ -42,16 +42,13 @@ export const UploadFileForm = ({
 				<DragAndDropZone
 					fileRef={imageFileRef}
 					handleFileChange={handleImageChange}
-					label="Okładka"
+					label="Cover"
 					isPDFFormat={false}
 					errorMessage={imageFileErrorMessage}
 				/>
 			)}
 			{imageFile && previewUrl && (
-				<ImagePreview
-					previewUrl={previewUrl as string}
-					label="Podgląd obrazka"
-				/>
+				<ImagePreview previewUrl={previewUrl as string} label="Image preview" />
 			)}
 		</form>
 	);

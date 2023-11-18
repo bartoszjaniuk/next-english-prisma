@@ -33,7 +33,7 @@ export const StepButtons = ({
 	return (
 		<div className="flex self-start pt-4">
 			{!isFirstStep && (
-				<Button title="Poprzedni krok" onClick={previousStep} isInverted />
+				<Button title="Previous step" onClick={previousStep} isInverted />
 			)}
 			<Button
 				title={buttonTitle[step]}

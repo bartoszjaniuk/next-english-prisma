@@ -20,7 +20,7 @@ export const icons = [
 		),
 	},
 	{
-		name: "Dodaj plik",
+		name: "Upload file",
 		path: "/upload",
 		icon: (
 			<svg
@@ -40,7 +40,7 @@ export const icons = [
 		),
 	},
 	{
-		name: "Materiały",
+		name: "Materials",
 		path: "/materials",
 		icon: (
 			<svg

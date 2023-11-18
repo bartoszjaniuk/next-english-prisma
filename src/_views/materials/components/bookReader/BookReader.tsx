@@ -6,6 +6,7 @@ import { Loader } from "@/_views/upload/components/loader/Loader";
 import { BookNavigationContainer } from "../bookNavigation/BookNavigationContainer";
 import { BookScreen } from "../bookScreen/BookScreen";
 import { CustomTooltip } from "../customTooltip/CustomTooltip";
+import { useSavedWords } from "../singleMaterialView/hooks/useSavedWords";
 
 type BookReaderProps = {
 	data?: CurrentPage | null;
@@ -18,13 +19,15 @@ export const BookReader = ({
 	refetchPageData,
 	data,
 }: BookReaderProps) => {
+	const { updateSavedWords } = useSavedWords();
+
 	const {
 		translation,
 		translateText,
 		wordToTranslate,
 		isLoadingTranslation,
 		setWordToTranslate,
-	} = useTranslateWord(refetchPageData);
+	} = useTranslateWord({ refetchPageData, updateSavedWords });
 
 	return (
 		<>

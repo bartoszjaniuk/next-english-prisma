@@ -4,7 +4,15 @@ import { useMutation } from "@tanstack/react-query";
 import { translateTextMutation } from "../utils/translateTextMutation";
 import { Word } from "@/utils/api/book/models/book.types";
 
-export const useTranslateWord = (refetchPageData: VoidFunction) => {
+type UseTranslateWordProps = {
+	refetchPageData: VoidFunction;
+	updateSavedWords: VoidFunction;
+};
+
+export const useTranslateWord = ({
+	refetchPageData,
+	updateSavedWords,
+}: UseTranslateWordProps) => {
 	const [wordToTranslate, setWordToTranslate] = useState<Word | undefined>(
 		undefined,
 	);
@@ -20,7 +28,10 @@ export const useTranslateWord = (refetchPageData: VoidFunction) => {
 
 			return data;
 		},
-		onSuccess: () => refetchPageData(),
+		onSuccess: () => {
+			updateSavedWords();
+			refetchPageData();
+		},
 	});
 
 	const {
