@@ -1,28 +1,10 @@
-import { authOptions } from "@/utils/auth";
 import prisma from "@/utils/connect";
-import { getServerSession } from "next-auth";
 import { CurrentPage } from "./models/book.types";
 
 export const getCurrentPage = async (
 	bookId: string,
 ): Promise<CurrentPage | null> => {
 	try {
-		const session = await getServerSession(authOptions);
-		if (!session) {
-			Response.redirect("/api/auth/signin");
-			return null;
-		}
-		const user = await prisma.user.findFirst({
-			where: {
-				email: session?.user?.email,
-			},
-		});
-
-		if (!user) {
-			Response.json({ message: "Nie znaleziono uzytkownika" });
-			return null;
-		}
-
 		const bookSession = await prisma.bookSession.findUnique({
 			where: {
 				bookId: bookId,
