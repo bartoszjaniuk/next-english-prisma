@@ -1,7 +1,6 @@
 import { SingleMaterialView } from "@/_views/materials/components/singleMaterialView/SingleMaterialView";
 import { getBooksWithoutDetails } from "@/utils/api/book/getBooksWithoutDetails";
 import { getCurrentPage } from "@/utils/api/book/getCurrentPage";
-import { getSavedWords } from "@/utils/api/savedWords/getSavedWords";
 import React from "react";
 
 export const generateStaticParams = async () => {
@@ -21,8 +20,7 @@ type MaterialPageProps = {
 
 const MaterialPage = async ({ params }: MaterialPageProps) => {
 	const currentPage = await getCurrentPage(params.id);
-	const initialyLoadedSavedWords = await getSavedWords(params.id);
-	return <SingleMaterialView currentPage={currentPage} initialyLoadedSavedWords={initialyLoadedSavedWords} />;
+	return <SingleMaterialView currentPage={currentPage} />;
 };
 
 export default MaterialPage;
