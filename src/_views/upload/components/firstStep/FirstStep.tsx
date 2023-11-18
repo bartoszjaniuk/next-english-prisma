@@ -21,7 +21,7 @@ export const FirstStep = ({
 		<>
 			{!bookFile && (
 				<DragAndDropZone
-					label="Plik PDF"
+					label="PDF file"
 					handleFileChange={onBookFileChange}
 					fileRef={bookFileRef}
 					errorMessage={errorMessage}
@@ -29,7 +29,7 @@ export const FirstStep = ({
 			)}
 			{bookFile && (
 				<Badge
-					label="Plik PDF"
+					label="PDF file"
 					file={bookFile}
 					onRemoveFile={onRemoveBookFile}
 				/>

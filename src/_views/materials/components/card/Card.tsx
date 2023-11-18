@@ -24,7 +24,7 @@ export const Card = ({
 	const handleNavigate = () => router.push(`/materials/${id}`);
 	return (
 		<div
-			className="w-[350px] bg-layoutLight dark:bg-layoutDark rounded overflow-hidden shadow-lg hover:cursor-pointer"
+			className="w-full md:w-[350px] bg-layoutLight dark:bg-layoutDark rounded overflow-hidden shadow-lg hover:cursor-pointer"
 			onClick={handleNavigate}
 		>
 			<Image

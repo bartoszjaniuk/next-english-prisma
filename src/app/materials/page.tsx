@@ -7,7 +7,7 @@ export const revalidate = 1; // revalidate the data at most every hour
 const MaterialsPage = async () => {
 	const books = await getBooksWithoutDetails();
 	return (
-		<main className="container responsive-padding flex gap-8">
+		<main className="container flex flex-col md:flex-row gap-8">
 			{books.map((book) => (
 				<Card
 					id={book.id}

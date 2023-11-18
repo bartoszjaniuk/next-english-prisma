@@ -30,7 +30,7 @@ export const SecondStep = ({
 			{bookFile && (
 				<>
 					<Badge
-						label="Plik PDF"
+						label="PDF file"
 						file={bookFile}
 						onRemoveFile={handleRemoveBookFile}
 					/>
