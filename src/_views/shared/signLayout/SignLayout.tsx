@@ -77,7 +77,7 @@ export const SignLayout = ({
 			{isLogin && (
 				<div className="pt-2 flex items-center gap-1">
 					<p className="text-sm mb-0  font-extralight dark:text-neutral-200">
-						Don't have an account?
+						Don\u2019t have an account?
 					</p>
 					<button
 						className="font-light text-primary cursor-pointer"
