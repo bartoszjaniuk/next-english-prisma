@@ -10,7 +10,7 @@ export const generateStaticParams = async () => {
 	}));
 };
 
-export const dynamicParams = true;
+// export const dynamicParams = true;
 
 type MaterialPageProps = {
 	params: {
