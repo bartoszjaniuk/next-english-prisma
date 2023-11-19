@@ -6,8 +6,8 @@ export const BookScreen = ({ children }: { children: React.ReactNode }) => {
 			className="relative 
 		w-full
 		h-[380px]
-		md:h-[calc(100vh-200px)]
-		md:w-[700px]	
+		md:h-[calc(100vh-220px)]
+		lg:w-[700px]	
 		text-lg  
 		overflow-y-scroll 
 		block px-4 md:p-6 
