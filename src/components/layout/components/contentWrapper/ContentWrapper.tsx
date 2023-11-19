@@ -12,7 +12,7 @@ export const ContentWrapper = ({
 			data-testid="ContentWrapper--Container"
 			className={`${
 				isOpen ? "sm:pl-64" : "sm:pl-24"
-			} transition-all px-7 my-[1.5rem] w-full flex justify-center items-center`}
+			} transition-all px-7 w-full flex justify-center items-center`}
 		>
 			{children}
 		</div>

@@ -5,9 +5,9 @@ export const BookScreen = ({ children }: { children: React.ReactNode }) => {
 		<div
 			className="relative 
 		w-full
-		h-[calc(100vh-300px)]
+		h-[calc(100vh-250px)]
 		md:h-[calc(100vh-200px)]
-		lg:w-[700px]	
+		md:w-[700px]	
 		text-lg  
 		overflow-y-scroll 
 		block px-4 md:p-6 

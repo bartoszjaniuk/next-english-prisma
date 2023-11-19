@@ -20,7 +20,7 @@ export const BookNavigation = ({
 	isSessionUpdating,
 }: BookNavigationProps) => {
 	return (
-		<div className="relative">
+		<div className="relative py-2">
 			<Toolbar progress={progress} />
 
 			{children(currentPage)}
