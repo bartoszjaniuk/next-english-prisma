@@ -1,4 +1,4 @@
-export const Loader = ({ size = "8" }: { size?: string }) => {
+export const Loader = ({ size = "6" }: { size?: string }) => {
 	return (
 		<div role="status">
 			<svg

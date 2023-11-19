@@ -23,36 +23,33 @@ export const BookNavigation = ({
 		<div className="relative">
 			<Toolbar progress={progress} />
 			{children(currentPage)}
-			<div className="flex items-center  justify-center">
+			<div className="flex items-center justify-cente py-1">
 				<button
-					className="border w-full h-full "
+					className=" w-full bg-layoutLight dark:bg-layoutDark border-r-2 py-1 flex items-center justify-center"
 					disabled={isSessionUpdating}
 					onClick={() => handleChangePage("prev")}
 				>
+					<ArrowIcon className="w-6 h-6 text-gray-900 border dark:text-white dark:border-backgroundDark text-3xl rounded-full shadow-sm p-1 cursor-pointer mr-2" />
 					Previous
-					{/* <ArrowIcon
-						disabled={isSessionUpdating}
-						onClick={() => handleChangePage("prev")}
-						className="w-10 h-10 bg-gray-200 text-gray-900 border dark:bg-gray-700 dark:text-white dark:border-backgroundDark text-3xl rounded-full shadow-sm p-1 cursor-pointer"
-					/> */}
 				</button>
 
 				{isSessionUpdating && (
-					<span className="text-base px-8">
-						<Loader size="12" />
-					</span>
+					<div className="w-full bg-layoutLight dark:bg-layoutDark border-r-2 py-1 flex items-center justify-center">
+						<Loader />
+					</div>
 				)}
 				{!isSessionUpdating && (
-					<button className="border w-full h-full">
+					<div className="w-full bg-layoutLight dark:bg-layoutDark border-r-2 py-1 text-center">
 						<span className="text-base px-4">Page {currentPage}</span>
-					</button>
+					</div>
 				)}
-				<button className="border w-full">
-					<ArrowIcon
-						disabled={isSessionUpdating}
-						onClick={() => handleChangePage("next")}
-						className="w-10 h-10 bg-gray-200 text-gray-900 border dark:bg-gray-700 dark:text-white dark:border-backgroundDark text-3xl rounded-full shadow-sm p-1 cursor-pointer rotate-180"
-					/>
+				<button
+					className=" w-full bg-layoutLight dark:bg-layoutDark py-1 flex items-center justify-center"
+					disabled={isSessionUpdating}
+					onClick={() => handleChangePage("next")}
+				>
+					Next
+					<ArrowIcon className="w-6 h-6 text-gray-900 border dark:text-white dark:border-backgroundDark text-3xl rounded-full shadow-sm p-1 cursor-pointer rotate-180 ml-2" />
 				</button>
 			</div>
 		</div>

@@ -27,7 +27,7 @@ export const Clipboard = () => {
 				Clipboard
 			</button>
 			{isClipboardOpen && (
-				<div className="bg-layoutLight text-gray-900  dark:bg-layoutDark dark:text-white absolute top-12 left-0 md:top-0 mt-12 w-full p-6 h-full z-50 border scroll-auto overflow-scroll">
+				<div className="bg-layoutLight text-gray-900  dark:bg-layoutDark dark:text-white absolute top-12 left-0 md:top-0 mt-12 w-full p-6 h-[calc(100vh-150px)] z-50 border scroll-auto overflow-scroll">
 					<h1 className="text-2xl py-4">Clipboard of saving words</h1>
 					{areWordsAreLoading && <Loader size="12" />}
 					{!areWordsAreLoading &&
