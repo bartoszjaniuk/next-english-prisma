@@ -16,7 +16,7 @@ export const SingleMaterialView = ({
 	});
 
 	return (
-		<main className="w-full h-full justify-center flex flex-col items-center">
+		<main className="w-full h-full flex flex-col items-center">
 			<BookReader
 				isPageLoading={isPageLoading}
 				refetchPageData={refetchPageData}
