@@ -23,12 +23,19 @@ export const BookNavigation = ({
 		<div className="relative">
 			<Toolbar progress={progress} />
 			{children(currentPage)}
-			<div className="flex items-center mt-4 justify-center">
-				<ArrowIcon
+			<div className="flex items-center  justify-center">
+				<button
+					className="border w-full h-full "
 					disabled={isSessionUpdating}
 					onClick={() => handleChangePage("prev")}
-					className="w-10 h-10 bg-gray-200 text-gray-900 border dark:bg-gray-700 dark:text-white dark:border-backgroundDark text-3xl rounded-full shadow-sm p-1 cursor-pointer"
-				/>
+				>
+					Previous
+					{/* <ArrowIcon
+						disabled={isSessionUpdating}
+						onClick={() => handleChangePage("prev")}
+						className="w-10 h-10 bg-gray-200 text-gray-900 border dark:bg-gray-700 dark:text-white dark:border-backgroundDark text-3xl rounded-full shadow-sm p-1 cursor-pointer"
+					/> */}
+				</button>
 
 				{isSessionUpdating && (
 					<span className="text-base px-8">
@@ -36,13 +43,17 @@ export const BookNavigation = ({
 					</span>
 				)}
 				{!isSessionUpdating && (
-					<span className="text-base px-4">Page {currentPage}</span>
+					<button className="border w-full h-full">
+						<span className="text-base px-4">Page {currentPage}</span>
+					</button>
 				)}
-				<ArrowIcon
-					disabled={isSessionUpdating}
-					onClick={() => handleChangePage("next")}
-					className="w-10 h-10 bg-gray-200 text-gray-900 border dark:bg-gray-700 dark:text-white dark:border-backgroundDark text-3xl rounded-full shadow-sm p-1 cursor-pointer rotate-180"
-				/>
+				<button className="border w-full">
+					<ArrowIcon
+						disabled={isSessionUpdating}
+						onClick={() => handleChangePage("next")}
+						className="w-10 h-10 bg-gray-200 text-gray-900 border dark:bg-gray-700 dark:text-white dark:border-backgroundDark text-3xl rounded-full shadow-sm p-1 cursor-pointer rotate-180"
+					/>
+				</button>
 			</div>
 		</div>
 	);

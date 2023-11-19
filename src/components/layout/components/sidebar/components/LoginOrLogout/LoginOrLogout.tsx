@@ -1,4 +1,5 @@
 import { signIn, signOut } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 type LoginOrLogoutProps = {
@@ -7,8 +8,16 @@ type LoginOrLogoutProps = {
 };
 
 export const LoginOrLogout = ({ isLoggedIn, isOpen }: LoginOrLogoutProps) => {
+	const router = useRouter();
 	const handleLogInOrLogOut = async () => {
-		if (isLoggedIn) await signOut();
+		if (isLoggedIn) {
+			const data = await signOut({
+				redirect: false,
+				callbackUrl: "/api/auth/signin",
+			});
+			router.push(data.url);
+		}
+
 		signIn();
 	};
 
