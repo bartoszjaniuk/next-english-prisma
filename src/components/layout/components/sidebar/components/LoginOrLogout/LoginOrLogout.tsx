@@ -7,8 +7,8 @@ type LoginOrLogoutProps = {
 };
 
 export const LoginOrLogout = ({ isLoggedIn, isOpen }: LoginOrLogoutProps) => {
-	const handleLogInOrLogOut = () => {
-		if (isLoggedIn) signOut();
+	const handleLogInOrLogOut = async () => {
+		if (isLoggedIn) await signOut();
 		signIn();
 	};
 
