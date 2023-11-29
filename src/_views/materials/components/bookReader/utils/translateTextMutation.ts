@@ -7,12 +7,13 @@ export const translateTextMutation = async (
 	encodedParams.set("source_language", "en");
 	encodedParams.set("target_language", "pl");
 	encodedParams.set("text", wordToTranslate);
+	const rapidApiKey = process.env.NEXT_PUBLIC_TRANSLATE_API_KEY as string;
 
 	const res = await fetch(TRANSLATE_API_URL, {
 		method: "POST",
 		headers: {
 			"content-type": "application/x-www-form-urlencoded",
-			"X-RapidAPI-Key": "12d29bfd67mshceb9e303c9830a4p126134jsne975ca98c91d",
+			"X-RapidAPI-Key": rapidApiKey,
 			"X-RapidAPI-Host": "text-translator2.p.rapidapi.com",
 		},
 		body: encodedParams,
