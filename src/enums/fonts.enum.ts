@@ -1,0 +1,15 @@
+export enum GoogleFonts {
+	"SOURCE_SANS_PRO" = "Source Sans Pro",
+	"ROBOTO_MONO" = "Roboto Mono",
+	"RALEWAY" = "Raleway",
+	"CORMORANT" = "Cormorant",
+	"ROBOTO" = "Roboto",
+	"OPEN_SANS" = "Open Sans",
+	"FIRA_SANS" = "Fira Sans",
+	"MONTSERRAT" = "Montserrat",
+	"POPPINS" = "Poppins",
+	"ROBOTO_SLAB" = "Roboto Slab",
+	"NOTO_SANS" = "Noto Sans",
+	"SOURCE_SANS_3" = "Source Sans 3",
+	"OSWALD" = "Oswald",
+}

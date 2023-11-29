@@ -3,12 +3,19 @@ import prisma from "@/utils/connect";
 import { getServerSession } from "next-auth";
 import { SavedWord } from "../book/models/book.types";
 
-export const getSavedWords = async (id: string): Promise<SavedWord[] | []> => {
+export type SavedWordsReturnType = {
+	savedWords: SavedWord[] | [];
+	fontStyle: string | null;
+};
+
+export const getSavedWords = async (
+	id: string,
+): Promise<SavedWordsReturnType> => {
 	try {
 		const session = await getServerSession(authOptions);
 		if (!session) {
 			Response.redirect("/api/auth/signin");
-			return [];
+			return { fontStyle: null, savedWords: [] };
 		}
 		const user = await prisma.user.findFirst({
 			where: {
@@ -18,7 +25,7 @@ export const getSavedWords = async (id: string): Promise<SavedWord[] | []> => {
 
 		if (!user) {
 			Response.json({ message: "Nie znaleziono uzytkownika" });
-			return [];
+			return { fontStyle: null, savedWords: [] };
 		}
 
 		const book = await prisma.book.findUnique({
@@ -27,14 +34,18 @@ export const getSavedWords = async (id: string): Promise<SavedWord[] | []> => {
 			},
 			select: {
 				savedWords: true,
+				fontStyle: true,
 			},
 		});
 
-		if (!book) return [];
+		if (!book) return { fontStyle: null, savedWords: [] };
 
-		return book.savedWords;
+		return {
+			savedWords: book?.savedWords,
+			fontStyle: book?.fontStyle,
+		};
 	} catch (error) {
 		console.log(error);
-		return [];
+		return { fontStyle: null, savedWords: [] };
 	}
 };

@@ -48,9 +48,9 @@ export const BookReader = ({
 												isTranslationLoading={false}
 												translation={word.translation}
 												text={word.content}
-												key={i}
+												key={`${i}-translated`}
 											>
-												<span className="text-primary pb-1">
+												<span className="text-primary pb-1 ">
 													{word.content + " "}
 												</span>
 											</CustomTooltip>
@@ -64,7 +64,7 @@ export const BookReader = ({
 												}}
 												isTranslationLoading={isLoadingTranslation}
 												translation={translation?.translatedText}
-												key={i}
+												key={`${i}-not-translated`}
 											>
 												<span
 													className={`hover:border-primary border-transparent border-b-2 rounded-b-lg pb-1`}

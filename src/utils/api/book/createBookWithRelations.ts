@@ -34,6 +34,7 @@ export const createBookForCurrentUser = async ({
 			title: bookTitle,
 			totalPages: book.totalPages,
 			imageUrl,
+			fontStyle: "Source Sans Pro",
 			user: {
 				connect: {
 					id: user.id,

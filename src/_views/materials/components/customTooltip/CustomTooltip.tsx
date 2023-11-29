@@ -2,6 +2,9 @@ import ReactDOM from "react-dom";
 import { usePopperTooltip } from "react-popper-tooltip";
 import { Loader } from "@/_views/upload/components/loader/Loader";
 import { PropsWithChildren } from "react";
+import { useFontStyle } from "@/hooks/useFontStyle/useFontStyle";
+import { transformObjectToArray } from "../toolbar/components/fontTool/utils/transformFontObjIntoArray";
+import { Font } from "@/utils/fonts";
 
 export type CustomTooltipProps = {
 	text: string;
@@ -29,10 +32,15 @@ export const CustomTooltip = ({
 		interactive: true,
 	});
 
+	const currentFont = useFontStyle();
+	const currentFontClassName = transformObjectToArray(Font).find(
+		(font) => font.name === currentFont,
+	)?.className;
+
 	return (
 		<>
 			<div
-				className="border-transparent hover:border-primary inline"
+				className={`border-transparent hover:border-primary inline ${currentFontClassName}`}
 				onClick={onClick}
 				role="button"
 				ref={setTriggerRef}

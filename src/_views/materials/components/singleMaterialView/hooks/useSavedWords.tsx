@@ -3,8 +3,6 @@ import { useBookKey } from "@/utils/queryKeys/bookKey";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
 
-
-
 export const useSavedWords = () => {
 	const params = useParams();
 	const id = params.id as string;

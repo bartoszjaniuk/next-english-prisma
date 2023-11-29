@@ -2,6 +2,7 @@ import React from "react";
 import { Tool } from "./components/tool/Tool";
 import { ProgressBar } from "../bookNavigation/components/progressBar/ProgressBar";
 import { Clipboard } from "./components/clipboard/Clipboard";
+import { FontTool } from "./components/fontTool/FontTool";
 
 type ToolbarProps = {
 	progress: number;
@@ -9,7 +10,7 @@ type ToolbarProps = {
 
 export const Toolbar = ({ progress }: ToolbarProps) => {
 	return (
-		<div className="mb-2 w-full lg:w-[700px] flex flex-col md:flex-row md:items-center gap-2 ">
+		<div className=" w-full lg:w-[700px] flex flex-col md:flex-row md:items-center gap-2 ">
 			<ProgressBar progressPercentage={progress} />
 			<div className="flex items-center gap-2">
 				<Tool>
@@ -17,11 +18,7 @@ export const Toolbar = ({ progress }: ToolbarProps) => {
 						Font size
 					</button>
 				</Tool>
-				<Tool>
-					<button disabled className="disabled:cursor-not-allowed">
-						Font style
-					</button>
-				</Tool>
+				<FontTool />
 				<Clipboard />
 			</div>
 		</div>

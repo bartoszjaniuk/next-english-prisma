@@ -5,7 +5,7 @@ export const BookScreen = ({ children }: { children: React.ReactNode }) => {
 		<div
 			className="relative 
 		w-full
-		h-[380px]
+		h-[550px]
 		md:h-[calc(100vh-220px)]
 		lg:w-[700px]	
 		text-lg  

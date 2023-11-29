@@ -44,7 +44,7 @@ export const useTranslateWord = ({
 			if (!wordToTranslate) return;
 			updateWord({
 				isTranslated: true,
-				translation: data.translatedText,
+				translation: data,
 				content: wordToTranslate.content,
 				id: wordToTranslate.id,
 				pageId: wordToTranslate.pageId,

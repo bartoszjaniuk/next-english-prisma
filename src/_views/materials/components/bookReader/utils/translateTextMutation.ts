@@ -1,30 +1,27 @@
 import { TRANSLATE_API_URL } from "../constants/translation.consts";
-import { Translation } from "../models/translation.types";
-
-
 
 export const translateTextMutation = async (
-    wordToTranslate: string
-): Promise<Translation> => {
-    const res = await fetch(TRANSLATE_API_URL, {
-        method: 'POST',
-        headers: {
-            "content-type": "application/json",
-            "X-RapidAPI-Key": "9681a355admsh9b82bbb1eb04046p148313jsn63b145f7b11c",
-            "X-RapidAPI-Host": "translate-it1.p.rapidapi.com",
-        },
-        body: JSON.stringify({
-            q: wordToTranslate,
-            source: "en",
-            target: "pl",
-        }),
-    })
+	wordToTranslate: string,
+): Promise<any> => {
+	const encodedParams = new URLSearchParams();
+	encodedParams.set("source_language", "en");
+	encodedParams.set("target_language", "pl");
+	encodedParams.set("text", wordToTranslate);
 
-    if (!res.ok) {
-        throw new Error(`HTTP error! status: ${res.status}`);
-    }
-    const data = res.json();
+	const res = await fetch(TRANSLATE_API_URL, {
+		method: "POST",
+		headers: {
+			"content-type": "application/x-www-form-urlencoded",
+			"X-RapidAPI-Key": "12d29bfd67mshceb9e303c9830a4p126134jsne975ca98c91d",
+			"X-RapidAPI-Host": "text-translator2.p.rapidapi.com",
+		},
+		body: encodedParams,
+	});
 
-    return data;
+	if (!res.ok) {
+		throw new Error(`HTTP error! status: ${res.status}`);
+	}
+	const data = await res.json();
+
+	return data.data.translatedText;
 };
-

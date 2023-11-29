@@ -1,4 +1,3 @@
-import { getCurrentPage } from "@/utils/api/book/getCurrentPage";
 import { getSavedWords } from "@/utils/api/savedWords/getSavedWords";
 
 export async function GET(request: Request) {

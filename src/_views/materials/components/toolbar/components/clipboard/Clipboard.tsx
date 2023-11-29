@@ -10,9 +10,9 @@ export const Clipboard = () => {
 	const id = params.id as string;
 	const bookKey = useBookKey();
 	const queryClient = useQueryClient();
-	const wordsFromCache: SavedWord[] | [] | undefined = queryClient.getQueryData(
-		[bookKey.savedWords(id)],
-	);
+	const wordsFromCache: { savedWords: SavedWord[] | [] } | undefined =
+		queryClient.getQueryData([bookKey.savedWords(id)]);
+
 	const areWordsAreLoading =
 		queryClient.getQueryState([bookKey.savedWords(id)])?.status === "pending";
 
@@ -32,7 +32,7 @@ export const Clipboard = () => {
 					{areWordsAreLoading && <Loader size="12" />}
 					{!areWordsAreLoading &&
 						!!wordsFromCache &&
-						wordsFromCache.map((word) => (
+						wordsFromCache.savedWords.map((word) => (
 							<div
 								key={word.id}
 								className="border-b-2 flex gap-1 whitespace-pre-wrap"
