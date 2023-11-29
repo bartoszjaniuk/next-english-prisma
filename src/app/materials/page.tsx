@@ -2,8 +2,6 @@ import { Card } from "@/_views/materials/components/card/Card";
 import { getBooksWithoutDetails } from "@/utils/api/book/getBooksWithoutDetails";
 import React from "react";
 
-export const revalidate = 1; // revalidate the data at most every hour
-
 const MaterialsPage = async () => {
 	const books = await getBooksWithoutDetails();
 	return (

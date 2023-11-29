@@ -24,60 +24,52 @@ export const BookReader = ({
 	const {
 		translation,
 		translateText,
-		wordToTranslate,
 		isLoadingTranslation,
 		setWordToTranslate,
 	} = useTranslateWord({ refetchPageData, updateSavedWords });
 
 	return (
 		<>
-			{isPageLoading && <Loader size="12" />}
+			<Loader size="12" isLoading={isPageLoading} />
 			{!isPageLoading && data && (
 				<BookNavigationContainer
 					session={data.session}
 					refetchPageData={refetchPageData}
 				>
-					{(currentPage) => (
-						<BookScreen>
-							{data.words.map((word, i) => {
-								return (
-									<>
-										{word.isTranslated && (
-											<CustomTooltip
-												onClick={() => null}
-												isTranslationLoading={false}
-												translation={word.translation}
-												text={word.content}
-												key={`${i}-translated`}
-											>
-												<span className="text-primary pb-1 ">
-													{word.content + " "}
-												</span>
-											</CustomTooltip>
-										)}
-										{!word.isTranslated && (
-											<CustomTooltip
-												text={word.content}
-												onClick={() => {
-													setWordToTranslate(word);
-													translateText(word.content);
-												}}
-												isTranslationLoading={isLoadingTranslation}
-												translation={translation?.translatedText}
-												key={`${i}-not-translated`}
-											>
-												<span
-													className={`hover:border-primary border-transparent border-b-2 rounded-b-lg pb-1`}
-												>
-													{word.content + " "}
-												</span>
-											</CustomTooltip>
-										)}
-									</>
-								);
-							})}
-						</BookScreen>
-					)}
+					<BookScreen>
+						{data.words.map((word, i) =>
+							word.isTranslated ? (
+								<CustomTooltip
+									onClick={() => null}
+									isTranslationLoading={false}
+									translation={word.translation}
+									text={word.content}
+									key={`${i}-translated`}
+								>
+									<span className="text-primary pb-1 ">
+										{word.content + " "}
+									</span>
+								</CustomTooltip>
+							) : (
+								<CustomTooltip
+									text={word.content}
+									onClick={() => {
+										setWordToTranslate(word);
+										translateText(word.content);
+									}}
+									isTranslationLoading={isLoadingTranslation}
+									translation={translation?.translatedText}
+									key={`${i}-not-translated`}
+								>
+									<span
+										className={`hover:border-primary border-transparent border-b-2 rounded-b-lg pb-1`}
+									>
+										{word.content + " "}
+									</span>
+								</CustomTooltip>
+							),
+						)}
+					</BookScreen>
 				</BookNavigationContainer>
 			)}
 		</>

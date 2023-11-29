@@ -53,7 +53,7 @@ export const CustomTooltip = ({
 						ref={setTooltipRef}
 						{...getTooltipProps({ className: "tooltip-container" })}
 					>
-						{isTranslationLoading && <Loader />}
+						<Loader isLoading={isTranslationLoading} />
 						{!isTranslationLoading && translation && (
 							<div className="flex gap-2">{translation}</div>
 						)}

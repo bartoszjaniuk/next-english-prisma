@@ -56,7 +56,6 @@ export const useTranslateWord = ({
 		translation,
 		translateText,
 		isLoadingTranslation: isPending,
-		wordToTranslate,
 		setWordToTranslate,
 	};
 };

@@ -43,11 +43,13 @@ export const Card = ({
 					onChange={onOptionChange}
 				/>
 			)}
-			{isUpdating && (
-				<div className="absolute top-5 right-5">
-					<Loader />
-				</div>
-			)}
+
+			<Loader
+				isLoading={isUpdating}
+				wrapperComponent={(children) => (
+					<div className="absolute top-5 right-5">{children}</div>
+				)}
+			/>
 		</div>
 	);
 };

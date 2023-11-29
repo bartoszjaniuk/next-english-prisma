@@ -59,7 +59,7 @@ export const UploadContainer = () => {
 
 	return (
 		<div className="w-full lg:w-3/4 xl:w-1/2 flex flex-col items-center">
-			{isLoading && <Loader />}
+			<Loader isLoading={isLoading} />
 			{!isLoading && (
 				<>
 					<h1 className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary self-start mb-8 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">

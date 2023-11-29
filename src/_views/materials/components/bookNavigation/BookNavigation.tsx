@@ -1,14 +1,13 @@
 "use client";
 import { Loader } from "@/_views/upload/components/loader/Loader";
 import { ArrowIcon } from "@/components/icons/ArrowIcon/ArrowIcon";
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import { Toolbar } from "../toolbar/Toolbar";
 
 type BookNavigationProps = {
 	progress: number;
 	currentPage: number;
 	handleChangePage: (direction: "prev" | "next") => void;
-	children: (pageNumber: number) => React.ReactNode;
 	isSessionUpdating: boolean;
 };
 
@@ -18,11 +17,11 @@ export const BookNavigation = ({
 	progress,
 	children,
 	isSessionUpdating,
-}: BookNavigationProps) => {
+}: PropsWithChildren<BookNavigationProps>) => {
 	return (
 		<div className="relative">
 			<Toolbar progress={progress} />
-			{children(currentPage)}
+			{children}
 			<div className="flex items-center justify-cente py-1">
 				<button
 					className=" w-full bg-layoutLight dark:bg-layoutDark border-r-2 py-1 flex items-center justify-center"
@@ -33,11 +32,15 @@ export const BookNavigation = ({
 					Previous
 				</button>
 
-				{isSessionUpdating && (
-					<div className="w-full bg-layoutLight dark:bg-layoutDark border-r-2 py-1 flex items-center justify-center">
-						<Loader />
-					</div>
-				)}
+				<Loader
+					isLoading={isSessionUpdating}
+					wrapperComponent={(children) => (
+						<div className="w-full bg-layoutLight dark:bg-layoutDark border-r-2 py-1 flex items-center justify-center">
+							{children}
+						</div>
+					)}
+				/>
+
 				{!isSessionUpdating && (
 					<div className="w-full bg-layoutLight dark:bg-layoutDark border-r-2 py-1 text-center">
 						<span className="text-base px-4">Page {currentPage}</span>
