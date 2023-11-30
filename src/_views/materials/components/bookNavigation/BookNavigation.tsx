@@ -19,7 +19,7 @@ export const BookNavigation = ({
 	isSessionUpdating,
 }: PropsWithChildren<BookNavigationProps>) => {
 	return (
-		<div className="relative h-[55svh] sm:h-[70vh] lg:h-[80vh]">
+		<div className="relative h-[60svh] sm:h-[70vh] lg:h-[80vh]">
 			<Toolbar progress={progress} />
 			{children}
 			<div className="flex items-center justify-cente py-1">
