@@ -1,23 +1,28 @@
 "use client";
 import { useState } from "react";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { translateTextMutation } from "../utils/translateTextMutation";
 import { Word } from "@/utils/api/book/models/book.types";
+import { useBookKey } from "@/utils/queryKeys/bookKey";
 
 type UseTranslateWordProps = {
 	refetchPageData: VoidFunction;
 	updateSavedWords: VoidFunction;
+	bookId: string | undefined;
 };
 
 export const useTranslateWord = ({
 	refetchPageData,
 	updateSavedWords,
+	bookId,
 }: UseTranslateWordProps) => {
 	const [wordToTranslate, setWordToTranslate] = useState<Word | undefined>(
 		undefined,
 	);
+	const queryClient = useQueryClient();
+	const bookKey = useBookKey();
 
-	const { mutate: updateWord } = useMutation({
+	const { mutate: updateWord, isPending: isUpdating } = useMutation({
 		mutationFn: async (payload: Word) => {
 			const res = await fetch("../api/word", {
 				method: "POST",
@@ -28,9 +33,9 @@ export const useTranslateWord = ({
 
 			return data;
 		},
-		onSuccess: () => {
-			updateSavedWords();
+		onMutate: () => {
 			refetchPageData();
+			updateSavedWords();
 		},
 	});
 
@@ -42,6 +47,8 @@ export const useTranslateWord = ({
 		mutationFn: translateTextMutation,
 		onSuccess: (data) => {
 			if (!wordToTranslate) return;
+			bookId &&
+				queryClient.invalidateQueries({ queryKey: [bookKey.withId(bookId)] });
 			updateWord({
 				isTranslated: true,
 				translation: data,
@@ -55,7 +62,7 @@ export const useTranslateWord = ({
 	return {
 		translation,
 		translateText,
-		isLoadingTranslation: isPending,
+		isLoadingTranslation: isPending || isUpdating,
 		setWordToTranslate,
 	};
 };

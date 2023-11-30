@@ -1,5 +1,5 @@
 "use client";
-import { CurrentPage } from "@/utils/api/book/models/book.types";
+import { CurrentPage, Word } from "@/utils/api/book/models/book.types";
 import React from "react";
 import { useTranslateWord } from "./hooks/useTranslateWord";
 import { Loader } from "@/_views/upload/components/loader/Loader";
@@ -26,7 +26,11 @@ export const BookReader = ({
 		translateText,
 		isLoadingTranslation,
 		setWordToTranslate,
-	} = useTranslateWord({ refetchPageData, updateSavedWords });
+	} = useTranslateWord({
+		refetchPageData,
+		updateSavedWords,
+		bookId: data?.bookId,
+	});
 
 	return (
 		<>
@@ -37,41 +41,57 @@ export const BookReader = ({
 					refetchPageData={refetchPageData}
 				>
 					<BookScreen>
-						{data.words.map((word, i) =>
-							word.isTranslated ? (
-								<CustomTooltip
-									onClick={() => null}
-									isTranslationLoading={false}
-									translation={word.translation}
-									text={word.content}
-									key={`${i}-translated`}
-								>
-									<span className="text-primary pb-1 ">
-										{word.content + " "}
-									</span>
-								</CustomTooltip>
-							) : (
-								<CustomTooltip
-									text={word.content}
-									onClick={() => {
-										setWordToTranslate(word);
-										translateText(word.content);
-									}}
-									isTranslationLoading={isLoadingTranslation}
-									translation={translation?.translatedText}
-									key={`${i}-not-translated`}
-								>
-									<span
-										className={`hover:border-primary border-transparent border-b-2 rounded-b-lg pb-1`}
-									>
-										{word.content + " "}
-									</span>
-								</CustomTooltip>
-							),
-						)}
+						{data.words.map((word, i) => (
+							<CustomTooltipWrapper
+								key={i}
+								word={word}
+								isTranslationLoading={isLoadingTranslation}
+								onClick={() => {
+									setWordToTranslate(word);
+									translateText(word.content);
+								}}
+							/>
+						))}
 					</BookScreen>
 				</BookNavigationContainer>
 			)}
 		</>
+	);
+};
+
+type CustomTooltipProps = {
+	isTranslationLoading: boolean;
+	word: Word;
+	onClick: VoidFunction;
+};
+
+export const CustomTooltipWrapper = ({
+	isTranslationLoading,
+	word,
+	onClick,
+}: CustomTooltipProps) => {
+	const handleClick = () => {
+		if (word.isTranslated) return;
+		onClick();
+	};
+
+	return (
+		<CustomTooltip
+			onClick={handleClick}
+			isTranslationLoading={isTranslationLoading}
+			translation={word.translation}
+			text={word.content}
+		>
+			{word.isTranslated && (
+				<span className="text-primary pb-1 ">{word.content + " "}</span>
+			)}
+			{!word.isTranslated && (
+				<span
+					className={`hover:border-primary border-transparent border-b-2 rounded-b-lg pb-1`}
+				>
+					{word.content + " "}
+				</span>
+			)}
+		</CustomTooltip>
 	);
 };

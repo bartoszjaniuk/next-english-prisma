@@ -10,7 +10,7 @@ type ToolbarProps = {
 
 export const Toolbar = ({ progress }: ToolbarProps) => {
 	return (
-		<div className=" w-full lg:w-[700px] flex flex-col md:flex-row md:items-center gap-2 ">
+		<div className=" w-full lg:w-[700px] flex flex-col md:flex-row md:items-center gap-2  mb-2">
 			<ProgressBar progressPercentage={progress} />
 			<div className="flex items-center gap-2">
 				<Tool>

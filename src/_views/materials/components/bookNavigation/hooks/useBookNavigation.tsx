@@ -22,12 +22,12 @@ export const useBookNavigation = ({
 
 	useQuery({
 		initialData: session,
-		queryKey: [bookKey.sessionWithId(session.bookId as string)],
+		queryKey: [bookKey.sessionWithId(session.bookId)],
 		queryFn: async () => {
 			const res = await fetch(`../api/bookSession?id=${session.bookId}`);
-			if (!res.ok) return null;
+			if (!res.ok) return { bookCurrentPage: 0 };
 			const data: { bookCurrentPage: BookSession } = await res.json();
-			return data.bookCurrentPage;
+			return data.bookCurrentPage || 1;
 		},
 	});
 
