@@ -3,7 +3,6 @@ import { getServerSession } from "next-auth/next";
 import "../styles/globals.css";
 import { AppProviders } from "@/providers/AppProviders";
 import { authOptions } from "@/utils/auth";
-import { Font } from "@/utils/fonts";
 
 export const metadata: Metadata = {
 	title: "Next Level English",
@@ -19,7 +18,7 @@ export default async function RootLayout({
 	const session = await getServerSession(authOptions);
 	return (
 		<html lang="en" suppressHydrationWarning>
-			<body className={`${Font.cormorant} min-h-screen`}>
+			<body className="min-h-screen">
 				<AppProviders session={session}>{children}</AppProviders>
 			</body>
 		</html>
