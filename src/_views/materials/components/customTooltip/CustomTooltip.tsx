@@ -37,8 +37,6 @@ export const CustomTooltip = ({
 		(font) => font.name === currentFont,
 	)?.className;
 
-	// if (!isTranslationLoading && !translation) return undefined;
-
 	return (
 		<>
 			<div
