@@ -12,7 +12,7 @@ const MaterialPage = async ({ params }: MaterialPageProps) => {
 	const currentPage = await getCurrentPage(params.id);
 
 	return (
-		<div className="px-7 w-full h-[calc(100svh-80px)] md:h-screen ">
+		<div className="w-full pt-4 h-[calc(100svh-80px)] md:h-screen ">
 			<SingleMaterialView currentPage={currentPage} />
 		</div>
 	);

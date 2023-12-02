@@ -7,6 +7,7 @@ import {
 } from "./utils/transformFontObjIntoArray";
 import { useFontStyle } from "@/hooks/useFontStyle/useFontStyle";
 import { useUpdateFontFamily } from "./hooks/useUpdateFontFamily";
+import { ToolDropdown } from "../toolDropdown/ToolDropdown";
 
 export const FontTool = () => {
 	const [isFontToolOpen, setIsFontToolOpen] = useState(false);
@@ -21,7 +22,7 @@ export const FontTool = () => {
 	};
 
 	return (
-		<div className="w-full  p-2 border rounded-lg bg-layoutLight text-gray-900  dark:bg-layoutDark dark:text-white whitespace-nowrap">
+		<div className="w-full p-2 border rounded-lg bg-layoutLight text-gray-900  dark:bg-layoutDark dark:text-white whitespace-nowrap">
 			<button
 				className="hover:cursor-pointer w-full h-full"
 				onClick={toggleFontToolOpen}
@@ -29,12 +30,13 @@ export const FontTool = () => {
 				Font style
 			</button>
 			{isFontToolOpen && (
-				<div className="bg-layoutLight text-gray-900  dark:bg-layoutDark dark:text-white absolute top-12 left-0 md:top-0 mt-12 w-full p-6 h-[calc(100vh-150px)] z-50 border scroll-auto overflow-scroll">
-					<div className="flex justify-between items-center border-b">
-						<h1 className="text-2xl py-2 px-4">
-							Choose font style for your book
-						</h1>
-						<div className="text-sm">Current font: {fontStyle}</div>
+				<ToolDropdown>
+					<div className="flex flex-col md:flex-ro justify-between md:items-center border-b gap-2 py-4">
+						<h1 className="text-2xl">Choose font style for your book</h1>
+						<div className="text-sm ">
+							Current font:{" "}
+							<span className="font-medium underline">{fontStyle}</span>
+						</div>
 					</div>
 					<div className="border-b-2 flex flex-col gap-2 whitespace-pre-wrap">
 						{googleFonts.map((font, index) => (
@@ -48,7 +50,7 @@ export const FontTool = () => {
 							/>
 						))}
 					</div>
-				</div>
+				</ToolDropdown>
 			)}
 		</div>
 	);

@@ -4,6 +4,7 @@ import { useBookKey } from "@/utils/queryKeys/bookKey";
 import { useQueryClient } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
 import React, { useState } from "react";
+import { ToolDropdown } from "../toolDropdown/ToolDropdown";
 
 export const Clipboard = () => {
 	const params = useParams();
@@ -27,7 +28,7 @@ export const Clipboard = () => {
 				Clipboard
 			</button>
 			{isClipboardOpen && (
-				<div className="bg-layoutLight text-gray-900  dark:bg-layoutDark dark:text-white absolute top-12 left-0 md:top-0 mt-12 w-full p-6 h-[calc(100vh-150px)] z-50 border scroll-auto overflow-scroll">
+				<ToolDropdown>
 					<h1 className="text-2xl py-4">Clipboard of saving words</h1>
 					<Loader size="12" isLoading={areWordsAreLoading} />
 					{!areWordsAreLoading &&
@@ -42,7 +43,7 @@ export const Clipboard = () => {
 								<p>{word.translation}</p>
 							</div>
 						))}
-				</div>
+				</ToolDropdown>
 			)}
 		</div>
 	);
