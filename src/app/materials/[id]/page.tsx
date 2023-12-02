@@ -10,7 +10,12 @@ type MaterialPageProps = {
 
 const MaterialPage = async ({ params }: MaterialPageProps) => {
 	const currentPage = await getCurrentPage(params.id);
-	return <SingleMaterialView currentPage={currentPage} />;
+
+	return (
+		<div className="px-7 w-full h-[calc(100svh-80px)] md:h-screen border-4 border-purple-500-600">
+			<SingleMaterialView currentPage={currentPage} />
+		</div>
+	);
 };
 
 export default MaterialPage;
