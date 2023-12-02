@@ -28,7 +28,7 @@ export const Card = ({
 			className="hover:cursor-pointer relative border border-white dark:border-black border-b rounded-none border-b-layoutDark dark:border-b-layoutLight px-4 py-2  w-full h-32 flex flex-col gap-4 hover:border hover:border-black hover:rounded-xl"
 		>
 			<p className={fontFamilyClassName}>{name}</p>
-			<h5 className={`${fontFamilyClassName} text-xl`}>
+			<h5 className={`${fontFamilyClassName} text-sm md:text-xl`}>
 				The most beautiful things in the world cannot be seen or touched, they
 				are felt with the heart.
 			</h5>

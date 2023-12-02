@@ -40,7 +40,7 @@ export const CustomTooltip = ({
 	return (
 		<>
 			<div
-				className={`border-transparent hover:border-primary inline ${currentFontClassName}`}
+				className={`border-transparent hover:border-primary block ${currentFontClassName}`}
 				onClick={onClick}
 				role="button"
 				ref={setTriggerRef}

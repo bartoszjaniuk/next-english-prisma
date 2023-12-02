@@ -83,13 +83,13 @@ export const CustomTooltipWrapper = ({
 			text={word.content}
 		>
 			{word.isTranslated && (
-				<span className="text-primary pb-1 ">{word.content + " "}</span>
+				<span className="text-primary pb-1 ">{word.content}</span>
 			)}
 			{!word.isTranslated && (
 				<span
 					className={`hover:border-primary border-transparent border-b-2 rounded-b-lg pb-1`}
 				>
-					{word.content + " "}
+					{word.content}
 				</span>
 			)}
 		</CustomTooltip>
