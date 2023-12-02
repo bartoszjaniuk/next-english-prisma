@@ -18,7 +18,7 @@ export default async function RootLayout({
 	const session = await getServerSession(authOptions);
 	return (
 		<html lang="en" suppressHydrationWarning>
-			<body className="min-h-screen">
+			<body className="min-h-[100svh]">
 				<AppProviders session={session}>{children}</AppProviders>
 			</body>
 		</html>
