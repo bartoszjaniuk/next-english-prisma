@@ -5,7 +5,7 @@ import React from "react";
 const MaterialsPage = async () => {
 	const books = await getBooksWithoutDetails();
 	return (
-		<main className="container flex flex-col md:flex-row gap-8 mb-4">
+		<main className="container flex flex-col md:flex-row gap-8 pb-4">
 			{books.map((book) => (
 				<Card
 					id={book.id}
