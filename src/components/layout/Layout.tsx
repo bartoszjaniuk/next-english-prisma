@@ -17,7 +17,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
 	return (
 		<>
 			{isWithoutLayout && (
-				<div className="flex  md:pb-0 h-full w-full border-4 border-red-500 z-50">
+				<div className="flex  md:pb-0 h-full w-full">
 					<Sidebar isOpen={isOpen} toggleIsOpen={toggleIsOpen} />
 					<ContentWrapper isOpen={isOpen}>{children}</ContentWrapper>
 				</div>
